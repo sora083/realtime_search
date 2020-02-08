@@ -1,5 +1,4 @@
 <template>
-  <!-- <div> -->
   <div id="app">
     <p>
       <input type="text" v-model="keyword" />
@@ -7,13 +6,11 @@
     <p>{{ message }}</p>
     <p>
       <li v-for="item in items">
-        <!-- {{ item.title }} -->
         <a v-bind:href="item.url" target="_blank">{{ item.title }}</a>
         like: {{ item.likes_count }}
       </li>
     </p>
   </div>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -31,7 +28,6 @@ export default {
   },
   watch: {
     keyword: function(newKeyword, oldKeyword) {
-      //console.log(newKeyword);
       this.message = "Waiting for you to stop typing...";
       this.debouncedGetAnswer();
     }
@@ -53,7 +49,6 @@ export default {
       axios
         .get("https://qiita.com/api/v2/items", { params })
         .then(function(response) {
-          console.log(response);
           vm.items = response.data;
         })
         .catch(function(error) {
